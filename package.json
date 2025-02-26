@@ -1,12 +1,9 @@
 {
     "name": "my-api",
     "version": "1.0.0",
-    "description": "A simple API deployed on Vercel without a framework",
+    "description": "A simple Edge API deployed on Vercel without a framework",
     "main": "api/hello.js",
     "scripts": {
-      "start": "node api/hello.js"
-    },
-    "engines": {
-      "node": "18.x"
+      "start": "echo 'Edge runtime runs on Vercel, no local start script needed'"
     }
   }
