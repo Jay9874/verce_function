@@ -1,4 +1,4 @@
-export default function handler(request) {
+export default async function handler(request) {
   const { method } = request;
 
   switch (method) {
@@ -9,16 +9,32 @@ export default function handler(request) {
       });
 
     case "POST":
-      return new Response(JSON.stringify({ message: "Data received via POST!" }), {
-        status: 201,
-        headers: { "Content-Type": "application/json" },
-      });
+      try {
+        const body = await request.json();
+        return new Response(JSON.stringify({ message: "POST received", data: body }), {
+          status: 201,
+          headers: { "Content-Type": "application/json" },
+        });
+      } catch (error) {
+        return new Response(JSON.stringify({ error: "Invalid JSON in request body" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
 
     case "PUT":
-      return new Response(JSON.stringify({ message: "Resource updated via PUT!" }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
+      try {
+        const body = await request.json();
+        return new Response(JSON.stringify({ message: "PUT updated", data: body }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      } catch (error) {
+        return new Response(JSON.stringify({ error: "Invalid JSON in request body" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
 
     case "DELETE":
       return new Response(JSON.stringify({ message: "Resource deleted via DELETE!" }), {
