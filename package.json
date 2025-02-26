@@ -1,16 +1,12 @@
 {
-  "name": "vercel_function",
-  "version": "1.0.0",
-  "description": "A demo for vercel function for api",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "Jay",
-    "Prakash",
-    "Sharma"
-  ],
-  "author": "Jay Prakash Sharma",
-  "license": "ISC"
-}
+    "name": "my-api",
+    "version": "1.0.0",
+    "description": "A simple API deployed on Vercel without a framework",
+    "main": "api/hello.js",
+    "scripts": {
+      "start": "node api/hello.js"
+    },
+    "engines": {
+      "node": "18.x"
+    }
+  }
